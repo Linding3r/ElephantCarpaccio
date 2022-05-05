@@ -9,6 +9,7 @@ public class Main {
     private double taxRate;
     private double procentage;
     private String stateCode;
+    private double bruttoPrice;
 
     public void inputItemAmount(){
         System.out.println("Please type the amount of items:");
@@ -48,6 +49,13 @@ public class Main {
         System.out.println("\n\n\nYou have entered " + stateCode + " which has a " + taxRate + "% tax rate.");
     }
 
+    public void calculateBrutto(){
+        System.out.println("Your cumulative cost of your items is");
+        bruttoPrice = itemAmount*itemprice;
+        System.out.println(bruttoPrice);
+    }
+
+
 
 
 
@@ -55,6 +63,7 @@ public class Main {
         inputItemAmount();
         itemPrice();
         inputStateCode();
+        calculateBrutto();
     }
 
     public static void main(String[] args) {
