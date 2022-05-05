@@ -10,6 +10,9 @@ public class Main {
     private double procentage;
     private String stateCode;
     private double bruttoPrice;
+    private double discountRate;
+    private double discountPercentage;
+    private double priceFinal;
 
     public void inputItemAmount(){
         System.out.println("Please type the amount of items:");
@@ -55,6 +58,32 @@ public class Main {
         System.out.println(bruttoPrice);
     }
 
+    public void checkDiscount(){
+        if(bruttoPrice > 1000 && bruttoPrice < 5000){
+            discountPercentage = 0.03;
+        }else if(bruttoPrice > 5000 && bruttoPrice < 7000){
+            discountPercentage = 0.05;
+        }else if(bruttoPrice > 7000 && bruttoPrice < 10000) {
+            discountPercentage = 0.07;
+        }else if(bruttoPrice > 10000 && bruttoPrice < 50000) {
+            discountPercentage = 0.10;
+        }else if(bruttoPrice > 50000) {
+            discountPercentage = 0.15;
+        }else discountPercentage = 0;
+    }
+
+    public void showDiscount(){
+        checkDiscount();
+        discountRate = bruttoPrice * discountPercentage;
+        System.out.println("Your totalt order discount is: " + discountRate);
+
+    }
+
+    public void showPriceWithDiscountAndTax(){
+        priceFinal = (bruttoPrice - discountRate) * ((procentage+100)/100);
+        System.out.println("\n\n\n\nFinal price after tax and disocunt: " + priceFinal+"$");
+    }
+
 
 
 
@@ -64,6 +93,8 @@ public class Main {
         itemPrice();
         inputStateCode();
         calculateBrutto();
+        showDiscount();
+        showPriceWithDiscountAndTax();
     }
 
     public static void main(String[] args) {
